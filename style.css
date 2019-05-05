@@ -1,0 +1,190 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #cfd0cf;
+}
+
+.container {
+	padding: 40px 100px;
+}
+
+.main__title {
+	font: 42px Arial;
+	line-height: 47px;
+	color: #434344;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+.cards {
+	display: grid;
+	margin: 0 auto;
+	grid-template-columns: 130px 130px 130px 130px;
+	grid-auto-rows: 130px 130px 130px;
+	grid-gap: 25px;
+	text-align: center;
+	justify-content: center;
+	perspective: 600px;
+}
+
+.card {
+	position: relative;
+	border-radius: 9px;
+	cursor: pointer;
+}
+
+.card__side {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 9px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+	transition: all .4s;
+	backface-visibility: hidden;
+}
+
+.card__side--front {
+	transform: rotateY(-180deg);
+	background-color: #fff;
+	position: relative;
+}
+
+.card__side--front span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 75px;
+	transform: translate(-50%, -50%);
+}
+
+.card__side--back {
+	background-image: linear-gradient(to right top, #22ab93, #19668d);
+	border: 5px solid #fff;
+}
+
+.active .card__side--back {
+	transform: rotateY(180deg);
+}
+
+.active .card__side--front {
+	transform: rotateY(0);
+}
+
+.card__fail .card__side--front{
+	background-color: #f44336;
+}
+
+.card__success .card__side--front{
+	background-color: #5ad66F;
+}
+
+/**TIMER**/
+.timer {
+	line-height: 36px;
+	font-size: 32px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin-top: 30px;
+	font-weight: bold;
+	color: #434344;
+}
+
+
+
+/**POPUP**/
+.popup {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.popup__content {
+	min-width: 350px;
+	width: 30%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: Arial, Helvetica, sans-serif;
+	color: #434344;
+}
+
+.game__message--lose > span,
+.game__message--win > span {
+	display: inline-block;
+}
+
+.game__message--lose > span,
+.game__message--win > span {
+	transform-origin: 100% 100% 0;
+}
+.game__message--lose > span:first-child,
+.game__message--win > span:first-child {
+	animation: animate 1s linear infinite;
+}
+.game__message--lose > span:nth-child(2),
+.game__message--win > span:nth-child(2) {
+	animation: animate 1s linear .2s infinite;
+}
+.game__message--lose > span:nth-child(3), 
+.game__message--win > span:nth-child(3) {
+	animation: animate 1s linear .4s infinite;
+}
+.game__message--lose > span:nth-child(4) {
+	animation: animate 1s linear .6s infinite;
+}
+
+@keyframes animate {
+	0% {
+		transform: scaleY(.8);
+	}
+
+	70% {
+		transform: scaleY(1.4);
+	}
+
+	100% {
+		transform: scaleY(.8);
+	}
+}
+
+.popup-try-again {
+	width: 100%;
+	height: 100%;
+	font-size: 48px;
+	padding: 30px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.popup-try-again .btn--play,
+.popup-try-again .btn--play:link,
+.popup-try-again .btn--play:visited {
+	padding: 10px 30px;
+	display: inline-block;
+	font-size: 20px;
+	color: #fff;
+	margin-top: 40px;
+	border-radius: 5px;
+	text-decoration: none;
+	background-image: linear-gradient(to right, #19668d, #22ab93);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .3);
+	transition: all .5s;
+}
+
+.popup-try-again .btn--play:hover,
+.popup-try-again .btn--play:active {
+	box-shadow: inset 2px 1px 8px rgba(0, 0, 0, .3);
+}
